@@ -6,8 +6,8 @@ NANR/RNAN = Animation Resource
 NCER/RECN = CEII Resource 
 NCGR/RGCN = Character Graphic Resource 
 NCLR/RLCN = Color Resource 
-NMAR
-NMCR
+NMAR      = ?
+NMCR      = ?
 NSBCA/BCA = Model Animation File
 NSBMD/BMD = 3D Model Format
 NSCR/RCSN = Screen Resource 
@@ -16,4 +16,4 @@ PAK       = Package File
 
 SDAT      = Sound Data File 
 
-VX/VXDS   = ?
+VX/VXDS   = Activision Video file

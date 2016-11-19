@@ -1,14 +1,14 @@
-package com.nds.graphics;
+package com.nds.video;
 
 import com.nds.FileFormat;
 import com.nds.FileFormatReader;
 
-public class NCER extends FileFormatReader
+public class VX extends FileFormatReader
 {
 	
-	public NCER()
+	public VX()
 	{
-		super(FileFormat.NCER);
+		super(FileFormat.VX);
 		// TODO Auto-generated constructor stub
 	}
 	

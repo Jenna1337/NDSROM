@@ -1,17 +1,39 @@
 package com.nds;
 
-public abstract class FileFormat
+import com.nds.archives.*;
+import com.nds.graphics.*;
+import com.nds.sounds.*;
+import com.nds.video.*;
+
+public enum FileFormat implements FormatType
 {
-	public final MagicID MAGIC_ID;
-	
-	private FileFormat()
+	NANR("RNAN", NANR.class),
+	NCER("RECN", NCER.class),
+	NCGR("RGCN", NCGR.class),
+	NCLR("RLCN", NCLR.class),
+	NSCR("RCSN", NSCR.class),
+	NARC("NARC", NARC.class),
+	SDAT("SDAT", SDAT.class),
+	VX  ("VXDS", VX.class  ),
+	;
+	private final String magicid;
+	private final Class<? extends FileFormatReader> clazz;
+	private FileFormat(String magicid, Class<? extends FileFormatReader> clazz)
 	{
-		MAGIC_ID = null;
+		this.magicid = magicid;
+		this.clazz = clazz;
 	}
-	public FileFormat(final String id)
-	{
-		this.MAGIC_ID = MagicID.valueOf(id);
-		// TODO Auto-generated constructor stub
+	public String getMagicID(){
+		return magicid;
 	}
-	
+	public FileFormatReader getFormatReader(){
+		try
+		{
+			return clazz.newInstance();
+		}
+		catch(InstantiationException | IllegalAccessException e)
+		{
+			throw new InternalError(e);
+		}
+	}
 }

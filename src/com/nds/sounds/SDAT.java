@@ -1,11 +1,15 @@
 package com.nds.sounds;
 
-public class SDAT
+import com.nds.FileFormat;
+import com.nds.FileFormatReader;
+
+public class SDAT extends FileFormatReader
 {
 	
 	public SDAT()
 	{
-		// TODO Auto-generated constructor stub
+		super(FileFormat.SDAT)
+;		// TODO Auto-generated constructor stub
 	}
 	
 }
