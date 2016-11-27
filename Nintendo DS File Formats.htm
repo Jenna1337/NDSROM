@@ -1,0 +1,1697 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<TITLE>Nintendo DS File Formats</TITLE> 
+<STYLE type="text/css">
+<!--
+.text {font-family: Geneva, Arial, Helvetica, sans-serif; font-size: 12px;}
+.bold {font-family: Geneva, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; }
+.highlight {color: #0099CC}
+.style1 {color: #FF0000}
+-->
+</STYLE>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.10586.672"></HEAD> 
+<BODY>
+<TABLE width="80%" align="center" class="text" border="1" cellspacing="0" 
+cellpadding="0">
+  <TBODY>
+  <TR>
+    <TD align="center" class="text" colspan="5">
+      <H2>Sections</H2></TD></TR>
+  <TR>
+    <TD align="center" class="text"><A href="#Generic">Generic Header Format 
+      </A></TD>
+    <TD align="center" class="text"><A href="#Graphics">Graphic File Formats 
+      </A></TD>
+    <TD align="center" class="text"><A href="#Archives">Archive File Formats 
+      </A></TD>
+    <TD align="center" class="text"><A href="#Sounds">Sound File Formats 
+    </A></TD>
+    <TD align="center" class="text"><A href="#Custom">Custom File Formats 
+    </A></TD></TR>
+  <TR>
+    <TD align="center" class="text"><A href="#Compression">Compression Formats 
+      </A></TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD></TR></TBODY></TABLE><BR>
+<TABLE width="80%" align="center" class="text" border="1" cellspacing="0" 
+cellpadding="0">
+  <TBODY>
+  <TR>
+    <TD align="center" class="text" colspan="5">
+      <H2>File Formats</H2></TD></TR>
+  <TR>
+    <TD align="center" class="text"><A href="#NCLR">NCLR</A></TD>
+    <TD align="center" class="text"><A href="#NCGR">NCGR</A></TD>
+    <TD align="center" class="text"><A href="#NCLR">NSCR</A></TD>
+    <TD align="center" class="text"><A href="#NANR">NANR</A></TD>
+    <TD align="center" class="text"><A href="#NCER">NCER</A></TD></TR>
+  <TR>
+    <TD align="center" class="text"><A href="#NARC">NARC</A></TD>
+    <TD align="center" class="text"><A href="#SDAT">SDAT</A></TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text"><A href="#PAK">PAK</A></TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD></TR></TBODY></TABLE><SPAN class="text"><BR></SPAN> 
+<TABLE width="80%" align="center" class="text" border="1" cellspacing="2" 
+cellpadding="0">
+  <TBODY>
+  <TR>
+    <TD align="center" class="text" colspan="4">
+      <H2><STRONG><A name="Generic" id="Generic"></A>Generic Header Format 
+      </STRONG></H2></TD></TR>
+  <TR>
+    <TD width="10%" align="center" class="text"><STRONG>Offset</STRONG></TD>
+    <TD width="10%" align="center" class="text"><STRONG>Length</STRONG></TD>
+    <TD width="18%" align="center" class="text"><STRONG>Name</STRONG></TD>
+    <TD width="62%" align="left" 
+  class="text"><STRONG>Description</STRONG></TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">Identifies the file format. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Constant</TD>
+    <TD align="left" class="text">Always (0xFFFE0001)</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the header. 
+    </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Header Size </TD>
+    <TD align="left" class="text">Size of this header. (Should always equal 
+      0x10) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xE</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Number of Sections </TD>
+    <TD align="left" class="text">The number of sub-sections in this section. 
+    </TD></TR></TBODY></TABLE><SPAN class="text"><BR></SPAN> 
+<TABLE width="80%" align="center" class="text" border="1" cellspacing="2" 
+cellpadding="0">
+  <TBODY>
+  <TR>
+    <TD align="center" class="text" colspan="4">
+      <H2><STRONG><A name="Graphics" id="Graphics"></A>Graphic File  
+      Formats</STRONG></H2></TD></TR>
+  <TR>
+    <TD align="left" class="bold" colspan="4">Nintendo Tile Format Palette 
+      (NTFP)</TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Palette Color </TD>
+    <TD align="left" class="text">Format is  BGR555 (XBBBBBGGGGGRRRRR).</TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><SPAN class="bold">Nintendo Tile 
+      Format Tile (NTFT)</SPAN></TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">8Bits or 4Bits </TD>
+    <TD align="center" class="text">Tile Data </TD>
+    <TD align="left" class="text">Indexes to colors in a palette. </TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><SPAN class="bold">Nintendo Tile 
+      Format Screen (NTFS)</SPAN></TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Screen Data </TD>
+    <TD align="left" class="text">Indexes to a tile.<BR>      Format is 
+      (YYYYXXNNNNNNNNNN)<BR>      Y4 Palette Number <BR>      X2 Transformation 
+      (YFlip/XFlip) <BR>      N10 Tile Number</TD></TR>
+  <TR>
+    <TD align="center" class="text" colspan="4">&nbsp;</TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><STRONG><A name="NCLR" 
+      id="NCLR"></A>Nintendo Color Resource (NCLR/RLCN)<BR></STRONG>- uses 
+      Generic Header<BR>      - magic ID is #RLCN (0x524C434E)<BR>    - contains 
+      2 sub-sections </TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><STRONG>#1 Section - Palette 
+      Data (TTLP) </STRONG></TD></TR>
+  <TR>
+    <TD width="10%" align="center" class="text"><STRONG>Offset</STRONG></TD>
+    <TD width="10%" align="center" class="text"><STRONG>Length</STRONG></TD>
+    <TD width="18%" align="center" class="text"><STRONG>Name</STRONG></TD>
+    <TD width="62%" align="left" 
+  class="text"><STRONG>Description</STRONG></TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#TTLP (0x54544C50) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the header. 
+    </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Palette Bit Depth </TD>
+    <TD align="left" class="text">3 = 4 Bits<BR>      4 = 8 Bits </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Padding?</TD>
+    <TD align="left" class="text">Always ( 0x000000)</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x10</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Palette Data Size </TD>
+    <TD align="left" class="text">Size of Palette Data in bytes.<BR>  if 
+      (0x200-size &gt; 0) then size = 0x200-size<BR>      also if the bit depth 
+      is 8 palette is 0x200 </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x14</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Colors Per Palette </TD>
+    <TD align="left" class="text">Probably always (16 colors). </TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">Palette Data stored as NTFP </TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><STRONG>#2 Section - Palette 
+      Count Map? (PMCP) </STRONG></TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#PMCP (0x504D4350) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Should always be (0x12). </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Palette Count </TD>
+    <TD align="left" class="text">Number of palettes in file. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xA</TD>
+    <TD align="center" class="text">0x6</TD>
+    <TD align="center" class="text">Unknown</TD>
+    <TD align="left" class="text">Always (0xEFBE080000) </TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Palette ID </TD>
+    <TD align="left" class="text">Simple ID number for each palette (starting 
+      from 0x0). </TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><STRONG><A name="NCGR" 
+      id="NCGR"></A>Nintendo Character Graphic Resource (NCGR/RGCN)</STRONG><BR> 
+           - uses Generic Header<BR>      - magic ID is #RGCN (0x5247434E)<BR>   
+       - contains 2 sub-sections </TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><STRONG>#1 Section - Character 
+      Data (RAHC) </STRONG></TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#RAHC (0x52414843) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Header Size </TD>
+    <TD align="left" class="text">Should always be (0x20) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the header. 
+    </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Tile Count </TD>
+    <TD align="left" class="text">Multiplied by 1024 gets the total number of 
+      pixels in the file. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xA</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Tile Size </TD>
+    <TD align="left" class="text">Always (0x20) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Tile Bit Depth </TD>
+    <TD align="left" class="text">3 = 4 Bits<BR>4 = 8 Bits </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x10</TD>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">Padding?</TD>
+    <TD align="left" class="text">Always (0x0) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x18</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Tile Data Size </TD>
+    <TD align="left" class="text">Divided by 1024 should equal Tile Count. 
+  </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x1C</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Unknown</TD>
+    <TD align="left" class="text">Always (0x24)</TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">Tile Data stored as NTFT </TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><STRONG>#2 Section - (SOPC) 
+      </STRONG></TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#SOPC (0x534F5043) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Should always be (0x10)</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Padding</TD>
+    <TD align="left" class="text">Always (0x0) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Tile Size?</TD>
+    <TD align="left" class="text">Always (0x20)</TD></TR>
+  <TR>
+    <TD align="center" class="text">0xE</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Tile Count </TD>
+    <TD align="left" class="text">Is always identical to Tile Count in #1 
+      Section. </TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><STRONG><A name="NSCR" 
+      id="NSCR"></A>Nintendo Screen Resource (NSCR/RCSN)</STRONG><BR>      - 
+      uses Generic Header<BR>      - magic ID is #RCSN (0x5243534E)<BR>    - 
+      contains only 1 sub-section </TD></TR>
+  <TR>
+    <TD align="left" class="bold" colspan="4">#1 Section - Screen Data (NRCS) 
+    </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#NRCS (0x4E524353) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Header Size </TD>
+    <TD align="left" class="text">Should always be (0x14) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the 
+    header.</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Screen Width </TD>
+    <TD align="left" class="text">Value is in pixels. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xA</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Screen Height </TD>
+    <TD align="left" class="text">Value is in pixels. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Padding</TD>
+    <TD align="left" class="text">Always (0x0) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x10</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Screen Data Size </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">Screen Data stored as NTFS </TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><STRONG><A name="NANR" 
+      id="NANR"></A>Nintendo Animation Resource (NANR/RNAN)</STRONG><BR>      - 
+      uses Generic Header<BR>      - magic ID is #RNAN (0x?)<BR>    - contains 3 
+      sub-sections </TD></TR>
+  <TR>
+    <TD align="left" class="bold" colspan="4">#1 Section - Animation Bank 
+      (KNBA) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#KNBA (0x?) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the 
+    header.</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Number of Animations </TD>
+    <TD align="left" class="text">Each animation is 16 bytes. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xA</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Frame Count </TD>
+    <TD align="left" class="text">Each frame is 8 bytes. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Unknown Constant </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x10</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Unknown</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x14</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Unknown Size </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x18</TD>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">Padding</TD>
+    <TD align="left" class="text">(Always 0x0) </TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">Animation Blocks </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Number of Frames </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Unknown</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x6</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Unknown</TD>
+    <TD align="left" class="text">Always (0x1) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Unknown</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">First Frame Offset </TD>
+    <TD align="left" class="text">RELATIVE to the end of this section. </TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">Frame Blocks </TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Unknown Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Frame Width </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Unknown</TD>
+    <TD align="left" class="text">Always (0xBEEF) </TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">Frame Data </TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><STRONG><A name="NCER" 
+      id="NCER"></A>Nintendo CEII Resource (NCER/RECN) </STRONG><BR>      - uses 
+      Generic Header<BR>      - magic ID is #RECN (0x5245434E)<BR>    - contains 
+      3 sub-sections </TD></TR>
+  <TR>
+    <TD align="left" class="bold" colspan="4">#1 Section - CEII Bank (KBEC) 
+  </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#KBEC (0x4B424543) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the 
+    header.</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center">0x4</TD>
+    <TD align="center">Number of Images </TD>
+    <TD align="left">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC</TD>
+    <TD align="center">0x4</TD>
+    <TD align="center">Unknown</TD>
+    <TD align="left">Always (0x12) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x10</TD>
+    <TD align="center">0x4</TD>
+    <TD align="center">Boundary Size </TD>
+    <TD align="left">Specifies the the area in which the image can be drawn 
+      multiplied by 64.<BR>      ie a boundary size of 2 means that the area is 
+      128x128 pixels. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x14</TD>
+    <TD align="center">0x12</TD>
+    <TD align="center">Padding</TD>
+    <TD align="left">Always (0x0) </TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center">&nbsp;</TD>
+    <TD align="center">&nbsp;</TD>
+    <TD align="left">Cell Table (8 bytes each)</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center">0x2</TD>
+    <TD align="center">Number of Cells </TD>
+    <TD align="left">The number of cells that make up an image. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center">0x2</TD>
+    <TD align="center">Unknown</TD>
+    <TD align="left">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center">0x4</TD>
+    <TD align="center">Cell Data Offset </TD>
+    <TD align="left">This offset is RELATIVE to the end of the Cell Table. 
+  </TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center">&nbsp;</TD>
+    <TD align="center">&nbsp;</TD>
+    <TD align="left">Cell Data (Starts at Number of Cells * 8 | each cell is 
+      made up of 6 bytes) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center">0x1</TD>
+    <TD align="center">Row Data </TD>
+    <TD align="left">Format is (RRY1Y2??)<BR>      RR = Row (Note that the row 
+      order is 2, 3, 0, 1)<BR>      Y1 = Y Offset from the top of the row. 
+      (Multiplied by 16)<BR>      Y2 = Y Offset from the top of the row. 
+      (Multiplied by 4) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center">0x1</TD>
+    <TD align="center">Cell Width </TD>
+    <TD align="left">Format is (WW????FF) <BR>      WW = Width of the 
+      cell.<BR>FF = Vertical Flag (Not sure if this is used or not).</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Column Data </TD>
+    <TD align="left" class="text">Format is (CCX1X2??)<BR>CC = Column (Note 
+      that the column order is 2, 3, 0, 1)<BR>X1 = X Offset from the top of the 
+      row. (Multiplied by 16) <BR>X2 = X Offset from the top of the row. 
+      (Multiplied by 4) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x3</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Cell Height </TD>
+    <TD align="left" class="text">Format is (HH????FF)<BR>      HH = Height of 
+      the cell.<BR>FF = Horizontal flag. </TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4">
+      <P><STRONG>Rows/Columns:</STRONG><BR>    Row/Column are numbered like that 
+      because for regular images, they shouldn't exceed the size of 0 &amp; 1 
+      (128x128 pixels), the frist two rows/columns are meant for larger images 
+      up to 256x256 pixels).<BR><BR>    The height and width of the cell is 
+      determined by referencing to 2D array. I am yet to find any cells that use 
+      nodes with ??.       <BR></P>
+      <TABLE width="200" height="150" align="center" border="1" cellspacing="0" 
+      cellpadding="0">
+        <TBODY>
+        <TR>
+          <TD align="center">&nbsp;</TD>
+          <TD align="center" colspan="5"><STRONG>Height</STRONG></TD></TR>
+        <TR>
+          <TD align="center" rowspan="5"><STRONG>Width</STRONG></TD>
+          <TD align="center">&nbsp;</TD>
+          <TD align="center"><STRONG>00</STRONG></TD>
+          <TD align="center"><STRONG>01</STRONG></TD>
+          <TD align="center"><STRONG>10</STRONG></TD>
+          <TD align="center"><STRONG>11</STRONG></TD></TR>
+        <TR>
+          <TD align="center"><STRONG>00</STRONG></TD>
+          <TD align="center">8x8</TD>
+          <TD align="center">16x16</TD>
+          <TD align="center">32x32</TD>
+          <TD align="center">64x64</TD></TR>
+        <TR>
+          <TD align="center"><STRONG>01</STRONG></TD>
+          <TD align="center">16x8</TD>
+          <TD align="center">32x8</TD>
+          <TD align="center">32x16</TD>
+          <TD align="center">64x32</TD></TR>
+        <TR>
+          <TD align="center"><STRONG>10</STRONG></TD>
+          <TD align="center">8x16</TD>
+          <TD align="center">8x32</TD>
+          <TD align="center">16x32</TD>
+          <TD align="center">32x64</TD></TR>
+        <TR>
+          <TD align="center"><STRONG>11</STRONG></TD>
+          <TD align="center">??</TD>
+          <TD align="center">??</TD>
+          <TD align="center">??</TD>
+          <TD align="center">??</TD></TR></TBODY></TABLE><BR>      So if a cell has 
+      a WW of 0 and a HH of 3 it's size is 64x64. <BR><BR><STRONG>X &amp; Y 
+      Offsets:</STRONG><BR>      I am not sure if the Y Offset is affected in 
+      the same way, but if the position of a cell is within the far right column 
+      and the FF (Flag) value is equal to 1. The offset is subtracted by 256.    
+     </TD></TR>
+  <TR align="center">
+    <TD class="text">0x4</TD>
+    <TD class="text">0x2</TD>
+    <TD class="text">Tile Offset </TD>
+    <TD align="left" class="text">The offset into the tile data where this 
+      cell starts. </TD></TR>
+  <TR>
+    <TD align="center" class="bold" colspan="4"><BR>    The last two sections 
+      of both files use the same format. <BR></TD></TR>
+  <TR>
+    <TD align="left" class="bold" colspan="4">#2 Section - Animation Label 
+      (LABL) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#LBAL (0x4C42414C) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the 
+    header.</TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Label Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">Label Name </TD>
+    <TD align="left" class="text">Terminated by (0x0) </TD></TR>
+  <TR>
+    <TD align="left" class="bold" colspan="4">#3 Section - (TXEU) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#TXEU (0x54584555) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center">0x4</TD>
+    <TD align="center">Section Size </TD>
+    <TD align="left">Size of this section, including the header.</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center">0x4</TD>
+    <TD align="center">Unknown</TD>
+    <TD align="left">0 or 1 </TD></TR></TBODY></TABLE><BR>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<TABLE width="80%" align="center" class="text" border="1" cellspacing="2" 
+cellpadding="0">
+  <TBODY>
+  <TR>
+    <TD align="center" class="text" colspan="4">
+      <H2><STRONG><A name="Archives" id="Archives"></A>Archive File  
+      Formats</STRONG></H2></TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><STRONG><A name="NARC" 
+      id="NARC"></A>Nintendo Archive (ARC/NARC)<BR></STRONG>- uses Generic 
+      Header<BR>      - magic ID is #NARC (0x4E415243)<BR>    - contains 3 
+      sub-sections </TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><STRONG>#1 Section - File 
+      Allocation Table (BTAF) </STRONG></TD></TR>
+  <TR>
+    <TD width="10%" align="center" class="text"><STRONG>Offset</STRONG></TD>
+    <TD width="10%" align="center" class="text"><STRONG>Length</STRONG></TD>
+    <TD width="18%" align="center" class="text"><STRONG>Name</STRONG></TD>
+    <TD width="62%" align="left" 
+  class="text"><STRONG>Description</STRONG></TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#BTAF (0x42544146) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Header Size </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the header. 
+    </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Number of Files </TD>
+    <TD align="left" class="text">The number of files in the archive. </TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">See below. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Start Offset </TD>
+    <TD align="left" class="text">Is RELATIVE to the GMIF section start 
+      offset. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x10</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">End Offset </TD>
+    <TD align="left" class="text">Is RELATIVE to the GMIF section start 
+    offset.</TD></TR>
+  <TR>
+    <TD align="left" class="bold" colspan="4">#2 Section - File Name Table 
+      (BTNF) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#BTNF (0x42544E46)</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the header. 
+    </TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">Directory Table </TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Directory Start Offset </TD>
+    <TD align="left" class="text">All other offsets are RELATIVE to the first 
+      directory start offset which is the root folder. </TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">First File Position </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Directory Count / Parent Directory </TD>
+    <TD align="left" class="text">For the root folder it has the total number 
+      of directories in the archive, and the latter for everything else. </TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">Name Table </TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Size of Name </TD>
+    <TD align="left" class="text">The first bit specifies whether it is a file 
+      or a folder. </TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0xLENGTH</TD>
+    <TD align="center" class="text">Name String </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">EXTRA</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Directory ID </TD>
+    <TD align="left" class="text">The number reference of that 
+directory.</TD></TR>
+  <TR>
+    <TD align="left" class="bold" colspan="4">#3 Section - File Image (GMIF) 
+    </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#GMIF (0x474D4946) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the header. 
+    </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Compression ID </TD>
+    <TD align="left" class="text">#LZ77 (0x4C5A3737)<BR>    Indicates that the 
+      file data is compressed. </TD></TR></TBODY></TABLE><BR>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<BLOCKQUOTE>&nbsp;</BLOCKQUOTE>
+<TABLE width="80%" align="center" class="text" border="1" cellspacing="2" 
+cellpadding="0">
+  <TBODY>
+  <TR>
+    <TD align="center" class="text" colspan="4">
+      <H2><STRONG><A name="Sounds" id="Sounds"></A>Sound File  
+      Formats</STRONG></H2></TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><STRONG><A name="SDAT" 
+      id="SDAT"></A>Sound Data File  (SDAT)<BR></STRONG>- uses Generic 
+      Header<BR>      - magic ID is #SDAT (0x53444154)<BR>    - contains 4 
+      sub-sections </TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><STRONG>Section Offsets 
+    </STRONG></TD></TR>
+  <TR>
+    <TD width="10%" align="center" class="text"><STRONG>Offset</STRONG></TD>
+    <TD width="10%" align="center" class="text"><STRONG>Length</STRONG></TD>
+    <TD width="18%" align="center" class="text"><STRONG>Name</STRONG></TD>
+    <TD width="62%" align="left" 
+  class="text"><STRONG>Description</STRONG></TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">SYMB Offset </TD>
+    <TD align="left" class="text">Offset to SYMB Section </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">SYMB Size </TD>
+    <TD align="left" class="text">Size of SYMB Section </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">INFO Offset </TD>
+    <TD align="left" class="text">Offset to INFO Section </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">INFO Size </TD>
+    <TD align="left" class="text">Size of INFO Section </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x10</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">FAT Offset </TD>
+    <TD align="left" class="text">Offset to FAT Section </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x14</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">FAT Size </TD>
+    <TD align="left" class="text">Size of FAT Section </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x18</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">FILE Offset </TD>
+    <TD align="left" class="text">Offset to FILE Section </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x1C</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">FILE Size </TD>
+    <TD align="left" class="text">Size of FILE Section</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x20</TD>
+    <TD align="center" class="text">0x16</TD>
+    <TD align="center" class="text">Padding</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="left" class="bold" colspan="4">#1 Section - (SYMB) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#SYMB (0x53594D42)</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the 
+    header.</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Sequences Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Sound Effects Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x10</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Banks Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x14</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Waves Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x18</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Players Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x1C</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Groups Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x20</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Streams Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x24</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Unknown Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x28</TD>
+    <TD align="center" class="text">0x24</TD>
+    <TD align="center" class="text">Padding</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x40</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Number of Files </TD>
+    <TD align="left" class="text">The number of files in this section </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x44</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Filename Offset </TD>
+    <TD align="left" class="text">Offset is RELATIVE to each section offset 
+  </TD></TR>
+  <TR>
+    <TD align="left" class="bold" colspan="4">#2 Section - Information (INFO) 
+    </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#INFO (0x?)</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the 
+    header.</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Sequences Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Sound Effects Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x10</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Banks Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x14</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Waves Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x18</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Players Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x1C</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Groups Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x20</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Streams Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x24</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Unknown Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x28</TD>
+    <TD align="center" class="text">0x24</TD>
+    <TD align="center" class="text">Padding</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Number of Elements </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Offset to First Element </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">ID of Current Element </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">Sequences Variables </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">Banks Variables </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">Players Variables </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">Groups Variables </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="left" class="bold" colspan="4">#3 Section - FIle Allocation 
+      Table (FAT) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#FAT (0x?) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the 
+    header.</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Number of Files </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">FAT Table (Repeats) </TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">File Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">File Size </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">Unknown</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="left" class="bold" colspan="4">#4 Section - File Data (FILE) 
+  </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#FILE (0x?) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the 
+    header.</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Number of Files </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Unknown</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><SPAN class="bold">Sound 
+      Sequence (SSEQ)</SPAN><BR>      - uses Generic Header<BR>      - magic ID 
+      is #SSEQ (0x?)<BR>      - contains only one section? </TD></TR>
+  <TR>
+    <TD align="left" class="bold" colspan="4">#1 Section - Sequence Data 
+      (DATA) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#DATA (0x?) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the 
+    header.</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Start Offset </TD>
+    <TD align="left" class="text">The offset to where the notation data 
+      begins. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC</TD>
+    <TD align="center" class="text">0x3</TD>
+    <TD align="center" class="text">Track Description (Command) </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">(Track Reference which repeats for the 
+      number of tracks)  </TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Open Track (Command) </TD>
+    <TD align="left" class="text">Fist bytes is the command code, second byte 
+      is the track number, and the last 2 bytes are the track offet.</TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x3</TD>
+    <TD align="center" class="text">Set Mono/Poly (Command) </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x3</TD>
+    <TD align="center" class="text">Set Tempo (Command) </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD class="bold" colspan="4">Sequence Commands </TD></TR>
+  <TR>
+    <TD width="10%" align="center" class="bold">Code</TD>
+    <TD width="10%" align="center" class="bold">Value Length</TD>
+    <TD width="18%" align="center" class="bold">Name</TD>
+    <TD width="62%" align="left" class="bold">Description</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x00 - 0x7F </TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Music Note </TD>
+    <TD align="left" class="text">Format is (0xVVDD)<BR>      V2 = 
+      Velocity<BR>      D2 = Duration </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x80</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Rest Note </TD>
+    <TD align="left" class="text">Duration of rest note. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x81</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Change Instrument </TD>
+    <TD align="left" class="text">Instrument number to change to. </TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x93</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Open Track </TD>
+    <TD align="left" class="text">Format is (0xAABBBBBB)<BR>      A2 = Track 
+      number<BR>      B6 = Track offset (RELATIVE to the start offset) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x94</TD>
+    <TD align="center" class="text">0x3</TD>
+    <TD align="center" class="text">Jump</TD>
+    <TD align="left" class="text">Move to postion in the track and loop. 
+</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x95</TD>
+    <TD align="center" class="text">0x3</TD>
+    <TD align="center" class="text">Call</TD>
+    <TD align="left" class="text">Move to the start of another track.</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC0</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Channel Panning </TD>
+    <TD align="left" class="text">Set panning value (-128 to 127) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC1</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Channel Volume </TD>
+    <TD align="left" class="text">Set volume </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC2</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Global Volume </TD>
+    <TD align="left" class="text">Set the sequence volume </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC3</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Transpose</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC4</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Portamento</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC5</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Portamento Range </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC6</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Priority</TD>
+    <TD align="left" class="text">Set the priority of the track. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC7</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Mono / Poly</TD>
+    <TD align="left" class="text">Set the phonie<BR>    0 = Polyphonie<BR>    
+      1 = Monophonie </TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0xCA</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Vibrato Depth </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0xCB</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Vibrato Speed </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0xE1</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Tempo</TD>
+    <TD align="left" class="text">Set the tempo. </TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0xFD</TD>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">Return</TD>
+    <TD align="left" class="text">Return from the previous "Call" command. 
+  </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xFE</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Track Description </TD>
+    <TD align="left" class="text">Number of tracks and their position. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0xFF</TD>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">End</TD>
+    <TD align="left" class="text">End of the track. </TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><SPAN class="bold">Sound 
+      Sequence Archive (SSAR)</SPAN><BR>      - uses Generic Header<BR>      - 
+      magic ID is #SSAR (0x?)<BR>      - contains only 1 section </TD></TR>
+  <TR class="bold">
+    <TD align="left" class="text" colspan="4">#1 Section - Data (DATA) </TD></TR>
+  <TR class="bold">
+    <TD align="center" class="text">Offset</TD>
+    <TD align="center" class="text">Length</TD>
+    <TD align="center" class="text">Name</TD>
+    <TD align="left" class="text">Description</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#DATA (0x?) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the 
+    header.</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Unknown Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0xC</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Number of elements </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x10</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Padding</TD>
+    <TD align="left" class="text">Always (0x0) </TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">Unknown</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Data Offset </TD>
+    <TD align="left" class="text">RELATIVE to Unknown Offset </TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">Actual Data </TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><SPAN class="bold">Sound Wave 
+      Archive (SWAR) </SPAN><BR>      - uses Generic Header<BR>      - magic ID 
+      is #SWAR (0x?)<BR>      - contains only 1 section </TD></TR>
+  <TR class="bold">
+    <TD align="left" class="text" colspan="4">#1 Section - Data (DATA) </TD></TR>
+  <TR class="bold">
+    <TD align="center" class="text">Offset</TD>
+    <TD align="center" class="text">Length</TD>
+    <TD align="center" class="text">Name</TD>
+    <TD align="left" class="text">Description</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#DATA (0x?) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the 
+    header.</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x32</TD>
+    <TD align="center" class="text">Unknown</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x28</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Number of Files </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">Repeats by Number of Files. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x2C</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Wave Offset </TD>
+    <TD align="left" class="text">RELATIVE to the start of the file. </TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">Data at Wave Offset. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Wave Type </TD>
+    <TD align="left" class="text">0 = PCM 8Bit<BR>      1 = PCM 16Bit<BR>      
+      2 = ADPCM </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Loop Support </TD>
+    <TD align="left" class="text">0 = False<BR>      1 = True </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Sample Rate </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Duration</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x6</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Loop Start </TD>
+    <TD align="left" class="text">Multiply by 4. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Loop Length </TD>
+    <TD align="left" class="text">Multiply by 4. </TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">Wave Data </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><SPAN class="bold">Sound Bank 
+      (SBNK) </SPAN><BR>      - uses Generic Header<BR>      - magic ID is #SBNK 
+      (0x?)<BR>      - contains only 1 section </TD></TR>
+  <TR class="bold">
+    <TD align="left" class="text" colspan="4">#1 Section - Data (DATA) </TD></TR>
+  <TR class="bold">
+    <TD align="center" class="text">Offset</TD>
+    <TD align="center" class="text">Length</TD>
+    <TD align="center" class="text">Name</TD>
+    <TD align="left" class="text">Description</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Magic ID </TD>
+    <TD align="left" class="text">#DATA (0x?) </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Section Size </TD>
+    <TD align="left" class="text">Size of this section, including the 
+    header.</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x32</TD>
+    <TD align="center" class="text">Unknown</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x28</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Number of Samples </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x2C</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Unknown Type </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x2D</TD>
+    <TD align="center" class="text">0x3</TD>
+    <TD align="center" class="text">Data Offset </TD>
+    <TD align="left" class="text">RELATIVE to the start of the file.</TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">Sample Data </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">Sample Number </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x2</TD>
+    <TD align="center" class="text">0x?</TD>
+    <TD align="center" class="text">Unknown Flag </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR></TBODY></TABLE><BR>
+<TABLE width="80%" align="center" class="text" border="1" cellspacing="2" 
+cellpadding="0">
+  <TBODY>
+  <TR>
+    <TD align="center" class="text" colspan="4">
+      <H2><STRONG><A name="Custom" id="Custom"></A>Custom File  
+      Formats</STRONG></H2></TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><STRONG><A name="PAK" 
+      id="PAK"></A>Package File  (PAK)<BR></STRONG>- found in Digimon Games<BR>  
+          - groups files (ie Palette/Graphic/Animation) either in separate PAK 
+      files for each type, or in a single file with each file in an ordered 
+      manner<BR>      - no filenames so referencing should be done by the index 
+      in the offset table (see below)<BR>    - each file is compressed </TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4"><STRONG>Section Offsets 
+    </STRONG></TD></TR>
+  <TR>
+    <TD width="10%" align="center" class="text"><STRONG>Offset</STRONG></TD>
+    <TD width="10%" align="center" class="text"><STRONG>Length</STRONG></TD>
+    <TD width="18%" align="center" class="text"><STRONG>Name</STRONG></TD>
+    <TD width="62%" align="left" 
+  class="text"><STRONG>Description</STRONG></TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Number of Files </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">DATA</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">File Start Offset </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">File Size </TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4">PAK5 Files<BR>      - known file 
+      formats with a custom 5 byte header added before the start of the normal 
+      file format<BR>      - found in PAK files and files in the normal file 
+      system of Digimon Games (named using a combination of a hex number and 
+      letter representing what format the file contains) </TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR></TBODY></TABLE><BR>
+<TABLE width="80%" align="center" class="text" border="1" cellspacing="2" 
+cellpadding="0">
+  <TBODY>
+  <TR>
+    <TD align="center" class="text" colspan="4">
+      <H2><STRONG><A name="Compression" id="Compression"></A>Compression 
+      Formats</STRONG></H2></TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4">Files may be stored using a 
+      variety of different compression formats including LZ77, Huffman and 
+      RLUncomp. Because there's a real lack of good easy to understand 
+      documentation on it (and trust me I know in order to be able to write 
+      this), I'm going to write my interpretations here.<BR><BR>    Generally 
+      the filenames of files will indicate whether or not they are compressed, 
+      but otherwise you have to guess it on your own. For starters if while 
+      looking at a file in a Hex Editor, the first 5 Bytes are then followed by 
+      a Magic ID, then it is almost guaranteed to be a compressed known file 
+      format, and this is where documentation helps!<BR><BR>    So first off we 
+      have a look at the first 4 Bytes or rather first 32 Bits, keeping in mind 
+      that the Nintendo DS works from right to left (Least Significant to Most 
+      Significant), which is Little Endian if you aren't very familiar with 
+      stuff like that. </TD></TR>
+  <TR>
+    <TD align="left" class="bold" colspan="4">Compression Header (Same for all 
+      types) </TD></TR>
+  <TR>
+    <TD width="10%" align="center" class="text"><STRONG>Offset (Bits) 
+    </STRONG></TD>
+    <TD width="10%" align="center" class="text"><STRONG>Length (Bits) 
+    </STRONG></TD>
+    <TD width="18%" align="center" class="text"><STRONG>Name</STRONG></TD>
+    <TD width="62%" align="left" 
+  class="text"><STRONG>Description</STRONG></TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Reserved / Compression Size </TD>
+    <TD align="left" class="text">Should always be (0x0) unless Compression 
+      Type is Huffman, in which case this specifies the Compression Size. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">0x4</TD>
+    <TD align="center" class="text">Compression Type </TD>
+    <TD align="left" class="text">Specifies what type of compression is used. 
+      <BR>      1 = LZ77<BR>      2 = Huffman<BR>      3 = RLUncomp </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">0x24</TD>
+    <TD align="center" class="text">Decompressed File Size </TD>
+    <TD align="left" class="text">The size the file will be after being 
+      decompressed. </TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4">After the header comes the 
+      compressed data, and depending on what Compression Type it is will affect 
+      how it is stored. </TD></TR>
+  <TR>
+    <TD align="left" class="bold" colspan="4">#1 Type - LZ77 Compression 
+</TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">Flag</TD>
+    <TD align="left" class="text">Each Bit tells if the corresponding Block of 
+      Data is compressed or uncompressed.<BR>      0 = Uncompressed<BR>      1 = 
+      Compressed </TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x8</TD>
+    <TD align="center" class="text">Uncompressed Data </TD>
+    <TD align="left" class="text">No decompression needed, single byte can be 
+      copied to the end of the place where the decompressed file is being 
+      stored. </TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">0x16</TD>
+    <TD align="center" class="text">Compressed Reference </TD>
+    <TD align="left" class="text">Format is (MMMMNNNNLLLLLLLL) <BR>      M4 = 
+      Most significant Bits<BR>      N4 = Number of Bytes to be copied<BR>      
+      L8 = Least significant Bits<BR><BR>      Copy Offset = (L8 | M4 &lt;&lt; 
+      8) +1</TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4">
+      <P>So when the decompressor finds a compressed block, it copies N+3 Bytes 
+      from the current position in the decompressed file minus the Copy 
+      Offset.<BR>      example:</P>
+      <BLOCKQUOTE>
+        <P><STRONG><EM>data = getBytes (<SPAN class="style1"> 
+        Data:</SPAN>decompressedData , <SPAN 
+        class="style1">Offset:</SPAN>currentOffset-copyOffset , <SPAN class="style1">Length:</SPAN>copyCount 
+        );         </EM></STRONG></P></BLOCKQUOTE>
+      <P>An important thing to note is that if the Copy Count greater than the 
+      distance between the Copy Offset and the Current Offset in the 
+      decompressed file, the data is repeatedly copied until it matches the Copy 
+      Count. This will often occur when the compressed data has the same 
+      value.</P></TD></TR>
+  <TR>
+    <TD align="left" class="bold" colspan="4">#2 Type - Huffman Compression 
+  </TD></TR>
+  <TR>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="center" class="text">&nbsp;</TD>
+    <TD align="left" class="text">&nbsp;</TD></TR>
+  <TR>
+    <TD align="left" class="bold" colspan="4">#3 Type - RL Compression </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x0</TD>
+    <TD align="center" class="text">0x7</TD>
+    <TD align="center" class="text">Expanded Length / Copy Count </TD>
+    <TD align="left" class="text">If the Flag is 0 this specifies how many 
+      bytes after the flag are copied to where the decompressed file is being 
+      stored.<BR>      Otherwise it specifies how many times the next byte is 
+      copied to where the decompressed file is being stored. </TD></TR>
+  <TR>
+    <TD align="center" class="text">0x7</TD>
+    <TD align="center" class="text">0x1</TD>
+    <TD align="center" class="text">Flag</TD>
+    <TD align="left" class="text">0 = Uncompressed (Add 1 to the Copy Count) 
+      <BR>    1 = Compressed (Add 3 to the Expanded Length) </TD></TR>
+  <TR>
+    <TD align="left" class="text" colspan="4">This is much simpler than the 
+      other two formats as you are only copying bytes from the source file to 
+      the decompressed file. </TD></TR></TBODY></TABLE></BODY></HTML>
