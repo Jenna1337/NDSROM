@@ -12,12 +12,6 @@ public class MBytes extends Number
 {
 	private final int length;
 	private byte[] data;
-	private class LengthMismatchError extends IllegalAccessError
-	{
-		public LengthMismatchError(int targlen){
-			super("The length"+length+" does not match the length of required bytes("+targlen+").");
-		}
-	}
 	public MBytes(int numbytes, final InputStream in)
 	{
 		this.length = numbytes;
@@ -41,7 +35,7 @@ public class MBytes extends Number
 		return this;
 	}
 	private void check(int reqlen){
-		if (length != reqlen) throw new LengthMismatchError(reqlen);
+		if (length != reqlen) throw new IndexOutOfBoundsException("The length"+length+" does not match the length of required bytes("+reqlen+").");
 	}
 	
 	
