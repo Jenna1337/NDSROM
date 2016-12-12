@@ -2,14 +2,9 @@ package com.nds;
 
 import java.io.InputStream;
 
-public abstract class FileFormatReader
+public abstract class FileFormatReader implements FormatType
 {
-	public final FileFormat MAGIC_ID;
-	
-	protected byte[] MagicID;
-	protected int section_size;// includes header
-	protected short header_size;
-	protected short num_sections;
+	private byte[] MagicID;
 	
 	/*
 	off siz 
@@ -19,10 +14,12 @@ public abstract class FileFormatReader
 	0xC 0x2 Header Size  Size of this header. (Should always equal 0x10)  
 	0xE 0x2 Number of Sections  The number of sub-sections in this section.  
 	*/
-	public FileFormatReader(FileFormat format, final InputStream in)
+	public FileFormatReader(FileFormat format)
 	{
-		this.MAGIC_ID = FileFormat.valueOf(format.getMagicID());
-		// TODO Auto-generated constructor stub
+		this.MagicID = format.getMagicID().getBytes();
 	}
-	
+	public String getMagicID(){
+		return new String(MagicID);
+	}
+	public abstract void readData(final InputStream in);
 }

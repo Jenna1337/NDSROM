@@ -5,7 +5,7 @@ import com.nds.graphics.*;
 import com.nds.sounds.*;
 import com.nds.video.*;
 
-public enum FileFormat implements FormatType
+public enum FileFormat
 {
 	NANR("RNAN", NANR.class),
 	NCER("RECN", NCER.class),
