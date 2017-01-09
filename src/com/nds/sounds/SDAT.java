@@ -1,18 +1,18 @@
 package com.nds.sounds;
 
-import java.io.InputStream;
-import com.nds.FileFormat;
-import com.nds.FileFormatReader;
+import java.io.IOException;
+import com.data.ROMDataInputStream;
+import com.nds.GenericFormatReader;
 
-public class SDAT extends FileFormatReader
+public class SDAT extends GenericFormatReader
 {
 	public SDAT()
 	{
-		super(FileFormat.SDAT);
 		// TODO Auto-generated constructor stub
 	}
-	public void readData(InputStream in)
+	public void readData(final ROMDataInputStream in) throws IOException
 	{
+		readGenericData(in);
 		// TODO Auto-generated method stub
 		
 	}

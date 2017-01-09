@@ -1,18 +1,18 @@
 package com.nds.archives;
 
-import java.io.InputStream;
-import com.nds.FileFormat;
-import com.nds.FileFormatReader;
+import java.io.IOException;
+import com.data.ROMDataInputStream;
+import com.nds.GenericFormatReader;
 
-public class NARC extends FileFormatReader
+public class NARC extends GenericFormatReader
 {
 	public NARC()
 	{
-		super(FileFormat.NARC);
 		// TODO Auto-generated constructor stub
 	}
-	public void readData(InputStream in)
+	public void readData(final ROMDataInputStream in) throws IOException
 	{
+		readGenericData(in);
 		// TODO Auto-generated method stub
 		
 	}

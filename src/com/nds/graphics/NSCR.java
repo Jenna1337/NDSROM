@@ -1,18 +1,18 @@
 package com.nds.graphics;
 
-import java.io.InputStream;
-import com.nds.FileFormat;
-import com.nds.FileFormatReader;
+import java.io.IOException;
+import com.data.ROMDataInputStream;
+import com.nds.GenericFormatReader;
 
-public class NSCR extends FileFormatReader
+public class NSCR extends GenericFormatReader
 {
 	public NSCR()
 	{
-		super(FileFormat.NSCR);
 		// TODO Auto-generated constructor stub
 	}
-	public void readData(InputStream in)
+	public void readData(final ROMDataInputStream in) throws IOException
 	{
+		readGenericData(in);
 		// TODO Auto-generated method stub
 		
 	}

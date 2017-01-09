@@ -1,17 +1,16 @@
 package com.nds.video;
 
-import java.io.InputStream;
-import com.nds.FileFormat;
-import com.nds.FileFormatReader;
+import java.io.IOException;
+import com.data.ROMDataInputStream;
+import com.nds.GenericFormatReader;
 
-public class VX extends FileFormatReader
+public class VX extends GenericFormatReader
 {
 	public VX()
 	{
-		super(FileFormat.VX);
 		// TODO Auto-generated constructor stub
 	}
-	public void readData(InputStream in)
+	public void readData(final ROMDataInputStream in) throws IOException
 	{
 		// TODO Auto-generated method stub
 		

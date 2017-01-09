@@ -1,9 +1,9 @@
 package com.nds;
 
-import java.io.InputStream;
+import java.io.IOException;
+import com.data.ROMDataInputStream;
 
 public interface FormatType
 {
-	public String getMagicID();
-	public void readData(final InputStream in);
+	public void readData(final ROMDataInputStream in) throws IOException;
 }

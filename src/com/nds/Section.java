@@ -3,8 +3,8 @@ package com.nds;
 public abstract class Section implements FormatType
 {
 	private final String magicid;
-	private final Class<? extends FileFormatReader> clazz;
-	private Section(String magicid, Class<? extends FileFormatReader> clazz)
+	private final Class<? extends GenericFormatReader> clazz;
+	private Section(String magicid, Class<? extends GenericFormatReader> clazz)
 	{
 		this.magicid = magicid;
 		this.clazz = clazz;
@@ -12,7 +12,7 @@ public abstract class Section implements FormatType
 	public String getMagicID(){
 		return magicid;
 	}
-	public FileFormatReader getFormatReader(){
+	public GenericFormatReader getFormatReader(){
 		try
 		{
 			return clazz.newInstance();
