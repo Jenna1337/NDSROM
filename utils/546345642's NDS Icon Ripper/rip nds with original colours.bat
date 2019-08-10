@@ -1,0 +1,1 @@
+for /r %%v in (*.nds) do python27 originalcolours.py "%%v"

@@ -1,0 +1,1 @@
+for /r %%v in (*.nds) do python27 dsmenucolours.py "%%v"
