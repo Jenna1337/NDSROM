@@ -1,0 +1,25 @@
+[package]
+name = "apicula"
+version = "0.1.1-dev"
+authors = ["scurest <scurest@users.noreply.github.com>"]
+license = "0BSD"
+build = "build.rs"
+
+[dependencies]
+atty = "0.2"
+cgmath = "0.16.0"
+clap = "2.30.0"
+glium = "0.23.0"
+json = "0.11"
+log = { version = "0.4.6", features = ["std"] }
+petgraph = "0.4.13"
+png = "0.11.0"
+smallvec = "0.6.5"
+termcolor = "0.3.5"
+time = "0.1.36"
+
+[build-dependencies]
+time = "0.1.36"
+
+[profile.release]
+panic = "abort"
