@@ -46,7 +46,7 @@ echo Extracting audio...
 set gcode=
 set gtitle=
 rem     Need this space     v
-set fppart=ndsext_v04\ndssndext.exe
+set fppart=ndssndext_v04\ndssndext.exe
 set fpcmd="%~dp0%fppart%" %targ%
 echo %fpcmd%
 for /F "tokens=1,2* delims=: " %%k in ('%~dp0%fppart% %targ%') do @(
