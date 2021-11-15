@@ -1,0 +1,9 @@
+[submodule "src/utils/apicula"]
+	path = src/utils/apicula
+	url = https://github.com/scurest/apicula
+[submodule "src/utils/sdatxtract"]
+	path = src/utils/sdatxtract
+	url = https://github.com/Oreo639/sdatxtract
+[submodule "src/utils/IconExtractor"]
+	path = src/utils/IconExtractor
+	url = https://github.com/CTurt/IconExtractor

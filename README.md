@@ -3,9 +3,10 @@ Decompiles NDS ROM files, and converts them to common formats.
 
 Basically, it extracts all the resources from a NDS ROM file to and converts them to more common formats. 
 
-| Source Format | Resulting Format | Implementation Status | Utility Used |
-| ---- | ---- | ---- | ---- |
-| Icon | PNG | WIP | 546345642's NDS Icon Ripper |
-| 3D Models | Collada | WIP | apicula |
-| Audio Sequences | MIDI | WIP | ndssndext_v04 |
-| Audio Streams | WAV | WIP | ndssndext_v04 |
+
+
+
+Btw, there's a project at https://github.com/pleonex/tinke that seems better put together than this one,
+ but it doesn't convert the actual game code to something readable like this project hopefully will be able to do. 
+Additionally, last I checked, tinke doesn't support extracting models or videos. 
+
